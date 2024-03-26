@@ -14,7 +14,7 @@ dataset:
 
 datatype: 'LA'
 
-val_check_interval: 10
+check_val_every_n_epoch: 10
 
 data_loader:
   train: 
@@ -69,25 +69,25 @@ model:
     cnn_maxpools: [true, true]
     cnn_dropouts: 0.0
     cnn_blocks: nn # n: resunet, d: deformconv, b: basicunet
-    hyb_kernel_sizes: [3,3, 3]
-    hyb_features: [32, 64, 128]
+    hyb_kernel_sizes: [3,3,3]
+    hyb_features: [32,64,128]
     hyb_strides: [2,2,2]
-    hyb_maxpools: [true,true, True]
+    hyb_maxpools: [true,true,true]
     hyb_cnn_dropouts: 0.0
     hyb_tf_proj_sizes: [64,32,0]
     hyb_tf_repeats: [1,1,1]
-    hyb_tf_num_heads: [4,4,4]
-    hyb_tf_dropouts: 0.1
+    hyb_tf_num_heads: [4,4,8]
+    hyb_tf_dropouts: 0.0
     hyb_cnn_blocks: nnn # n: resunet, d: deformconv, b: basicunet
     hyb_vit_blocks: SSC # s: dlka_special_v2, S: dlka_sp_seq, c: dlka_channel_v2, C: dlka_ch_seq
     # hyb_vit_sandwich: false
     hyb_skip_mode: "cat" # "sum" or "cat"
     hyb_arch_mode: "residual" # sequential, residual, parallel, collective
     hyb_res_mode: "sum" # "sum" or "cat"
-
+                
     # decoder params
     dec_hyb_tcv_kernel_sizes: [5,5,5]
-    dec_cnn_tcv_kernel_sizes: [5,7]
+    dec_cnn_tcv_kernel_sizes: [5,5]
     dec_cnn_blocks: null
     dec_tcv_bias: false
     dec_hyb_tcv_bias: false

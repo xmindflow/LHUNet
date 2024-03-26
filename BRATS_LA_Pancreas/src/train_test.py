@@ -47,7 +47,10 @@ def get_base_directory():
 
 def configure_logger(config, parent_dir):
     path = os.path.join(parent_dir, "tb_logs")
-    return TensorBoardLogger(path, name=config["model"]["name"])
+    if "brats" in config["dataset"]["name"].split("_")[0]:
+        return TensorBoardLogger(path, name=config["model"]["name"])
+    else:
+        return TensorBoardLogger(path, name=f"{config['model']['name']}_fold{config['fold']}")
 
 
 def configure_trainer(config, logger):
