@@ -5,7 +5,7 @@ CHECKPOINT_PATH=../OUTPUT/test
 
 export PYTHONPATH=.././
 export RESULTS_FOLDER="$CHECKPOINT_PATH"
-export unetr_pp_preprocessed="$DATASET_PATH"/unetr_pp_raw/unetr_pp_raw_data/Task01_ACDC
-export unetr_pp_raw_data_base="$DATASET_PATH"/unetr_pp_raw
+export lhunet_preprocessed="$DATASET_PATH"/lhunet_raw/lhunet_raw_data/Task01_ACDC
+export lhunet_raw_data_base="$DATASET_PATH"/lhunet_raw
 
-python ../unetr_pp/run/run_training.py 3d_fullres unetr_pp_trainer_acdc 1 0 -val --valbest
+python ../lhunet/run/run_training.py 3d_fullres lhunet_trainer_acdc 1 0 -val --valbest

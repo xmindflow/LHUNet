@@ -48,8 +48,9 @@ LHU-Net demonstrated exceptional performance across these datasets, significantl
 <p align="center">
   <img width="620" alt="synapse_table" src="figures/synapse_table.png">
 </p>
+
 <p align="center">
-  <img width="620" alt="ACDC_table" src="acdc_table.png">
+  <img width="620" alt="ACDC_table" src="figures/acdc_table.png">
 </p>
 <!-- ![synapse_table](figures/synapse_table.png)
 ![ACDC_table](figures/acdc_table.png) -->
@@ -99,7 +100,7 @@ This repository is built based on [nnFormer](https://github.com/282857341/nnForm
 If you find this work useful for your research, please cite:
 
 ```bibtex
-@inproceedings{sadegheih2024lhunet,
+@article{sadegheih2024lhunet,
   title={LHU-Net: A Light Hybrid U-Net for Cost-Efficient High-Performance Volumetric Medical Image Segmentation},
   author={Sadegheih, Yousef and Bozorgpour, Afshin and Kumari, Pratibha and Azad, Reza and Merhof, Dorit},
   year={2024}
