@@ -1,0 +1,15 @@
+opencv-python==4.6.0.66
+termcolor
+medpy
+torchinfo
+h5py
+ml_collections
+timm
+fvcore
+connected_components_3d==3.12.1
+openpyxl
+albumentations
+batchgenerators
+omegaconf
+nibabel
+torchmetrics
