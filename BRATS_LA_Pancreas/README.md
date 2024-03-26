@@ -4,8 +4,8 @@ You can download the learned weights in the following and their results.
    Dataset   | Visulization         | Weights
   -----------|----------------|----------------
    BRaTS 2018  | [[Download]()]| [[Download]()] 
-   LA       | [[Download]()]| [[Download]()] 
-   Pancreas       | [[Download]()]| [[Download]()] 
+   LA (fold 0)      | [[Download]()]| [[Download]()] 
+   Pancreas (fold 0)      | [[Download]()]| [[Download]()] 
 
 # BRaTS 2018 dataset
 Download the dataset: [Download]()
@@ -19,7 +19,7 @@ python src/train_test.py -c brats-2018_lhunet_sgd
 ## Inference
 Make sure in the config file you set the `just_test` variable to `true` and give the path to the model you want to test in the `ckpt_path`.
 ```bash
-python python src/train_test.py -c brats-2018_lhunet_sgd
+python src/train_test.py -c brats-2018_lhunet_sgd
 ```
 
 # Pancreas and LA dataset
