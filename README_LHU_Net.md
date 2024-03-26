@@ -18,7 +18,7 @@ This repository contains the official implementation of **LHU-Net**. Our paper, 
 - **Versatile Superiority**: Showcases unparalleled versatility and state-of-the-art performance across multiple datasets, highlighting its robustness and potential as a universal solution for medical image segmentation.
 
 <p align="center">
-  <img width="620" alt="ACDC-performance" src="figures/performance.jpeg">
+  <img width="900" alt="ACDC-performance" src="figures/performance.jpeg">
 </p>
 <!-- ![ACDC-performance](figures/performance.jpeg) -->
 
@@ -27,7 +27,7 @@ This repository contains the official implementation of **LHU-Net**. Our paper, 
 LHU-Net leverages a hierarchical U-Net encoder-decoder structure optimized for 3D medical image segmentation. The architecture integrates convolutional-based blocks with hybrid attention mechanisms, capturing both local features and non-local dependencies effectively.
 
 <p align="center">
-  <img width="620" alt="LHU-Net Architecture" src="figures/network_architecture.jpg">
+  <img width="900" alt="LHU-Net Architecture" src="figures/network_architecture.jpg">
 </p>
 <!-- ![LHU-Net Architecture](figures/network_architecture.jpg) -->
 
@@ -46,11 +46,11 @@ LHU-Net demonstrated exceptional performance across these datasets, significantl
 
 ## Results
 <p align="center">
-  <img width="620" alt="synapse_table" src="figures/synapse_table.png">
+  <img width="700" alt="synapse_table" src="figures/synapse_table.png">
 </p>
 
 <p align="center">
-  <img width="620" alt="ACDC_table" src="figures/acdc_table.png">
+  <img width="700" alt="ACDC_table" src="figures/acdc_table.png">
 </p>
 <!-- ![synapse_table](figures/synapse_table.png)
 ![ACDC_table](figures/acdc_table.png) -->

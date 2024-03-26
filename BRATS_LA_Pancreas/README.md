@@ -8,7 +8,7 @@ You can download the learned weights in the following and their results.
    Pancreas (fold 0)      | [[Download]()]| [[Download]()] 
 
 # BRaTS 2018 dataset
-Download the dataset: [Download]()
+Download the dataset: [Download](https://mega.nz/file/ShpgECbC#rpZr_lWFr5ZIk8vXe7AVCFEPLZIFxFg7NnQ-Vk16LrM)
 
 ## Training 
 ```bash
@@ -23,7 +23,7 @@ python src/train_test.py -c brats-2018_lhunet_sgd
 ```
 
 # Pancreas and LA dataset
-Download the pre-processed datasets with their splits: [Pancreas](), [LA]()
+Download the pre-processed datasets with their splits: [Pancreas](https://mega.nz/file/21p3ATLY#IZuAzvqXD8CymZZibN2oqLhfK0nZrBx8hWyk76SZRNk), [LA](https://mega.nz/file/K84Q3RKK#XDKPoSeYerwPJC7mcVyiTOM-Ydfv3TckDnAKkhpEVdY)
 
 ## Training
 ```bash

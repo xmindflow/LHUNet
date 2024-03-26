@@ -7,7 +7,7 @@ You can download the learned weights in the following and their results.
    ACDC       | [[Download]()]| [[Download]()] 
 
 # Synapse dataset
-Download the preprocessed data (It follows the nnU-Net preprocessing): [Download]()
+Download the preprocessed data (It follows the nnU-Net preprocessing): [Download](https://mega.nz/file/fopXXQyQ#X0KOHXTakaSz3ORJH4NS3fG8iB13JJe6Eq0W3eA02tE)
 
 ## Training
 ```bash
@@ -30,7 +30,7 @@ python inference_synapse_multiprocess.py 0
 ```
 
 # ACDC dataset
-Download the preprocessed data (It follows the nnU-Net preprocessing): [Download]()
+Download the preprocessed data (It follows the nnU-Net preprocessing): [Download](https://mega.nz/file/G0J3CQjY#tNw1yFa_6I7rDDvpu4cIJxEepWCVIk9J08i5tIln47Q)
 
 ## Training
 ```bash
