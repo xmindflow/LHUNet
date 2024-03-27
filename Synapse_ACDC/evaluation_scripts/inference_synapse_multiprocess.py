@@ -77,7 +77,7 @@ def write_results(file, results):
 
 
 def test(fold):
-    path = "/home/say26747/Desktop/Synapse_model"
+    path = "/home/say26747/Desktop/git/ACDC-nnunet/OUTPUT/test_synapse/lhunet/3d_fullres/Task002_Synapse/lhunet_trainer_synapse__lhunet_Plansv2.1/fold_0"
     label_list = sorted(glob.glob(os.path.join(path, "gt_niftis", "subset_for_inference", "*.nii.gz")))
     infer_list = sorted(glob.glob(os.path.join(path, "validation_raw_postprocessed", "*.nii.gz")))
     print("Loading success...")

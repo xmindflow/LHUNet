@@ -1,9 +1,9 @@
 is3d: true
 checkpoints:
-  continue_training: false
-  test_mode: false
-  ckpt_path: '/home/say26747/best.ckpt'
-  save_nifty: true
+  continue_training: false # continue training from a checkpoint (use it with ckpt_path)
+  test_mode: true # test mode (use it with ckpt_path)
+  ckpt_path: '/home/say26747/Desktop/lhUNET_SGD_DEV_dr0.1_V7_lr0.003_kernel_3_dec_5_test_as_val-epoch=963-val_total_dice=0.860515.ckpt'
+  save_nifty: true # save nifty files
 dataset:
   name: "brats2018_loader"
   input_size: [128,128,128]
@@ -38,19 +38,19 @@ data_loader:
   train: 
     batch_size: 2
     shuffle: true
-    num_workers: 16
+    num_workers: 12
     pin_memory: true
     persistent_workers: true
   validation: 
     batch_size: 1
     shuffle: false
-    num_workers: 16
+    num_workers: 12
     pin_memory: true
     persistent_workers: true
   test:
     batch_size: 1
     shuffle: false
-    num_workers: 16
+    num_workers: 12
     pin_memory: false
     persistent_workers: true
 training:
@@ -72,7 +72,7 @@ training:
   epochs: 1000
   
 model: 
-  name: 'lhUNET_SGD_DEV_dr0_V7_hybrid_stride_change_lr0.01_kernel_3_dec_5'
+  name: 'lhUNET_SGD_DEV_test' # do not change the lhUNET name at the begining
   params:
     spatial_shapes: [128,128,128]
     do_ds: false # Deep Supervision
@@ -94,7 +94,7 @@ model:
     hyb_tf_proj_sizes: [64,32,0]
     hyb_tf_repeats: [1,1,1]
     hyb_tf_num_heads: [4,4,8]
-    hyb_tf_dropouts: 0.0
+    hyb_tf_dropouts: 0.1
     hyb_cnn_blocks: nnn # n: resunet, d: deformconv, b: basicunet
     hyb_vit_blocks: SSC # s: dlka_special_v2, S: dlka_sp_seq, c: dlka_channel_v2, C: dlka_ch_seq
     # hyb_vit_sandwich: false

@@ -19,7 +19,7 @@ class SemanticSegmentation3D(pl.LightningModule):
         super(SemanticSegmentation3D, self).__init__()
         ############### initilizing the model and the config ################
         self.config = config
-        self.model = model
+        self.model = model.cuda()
         ############### initilizing the loss function ################
         lambda_dice = config["training"]["criterion"]["params"].get("dice_weight", 0.5)
         lambda_ce = config["training"]["criterion"]["params"].get("bce_weight", 0.5)

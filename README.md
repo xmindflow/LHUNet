@@ -64,7 +64,7 @@ This section provides instructions on how to run LHU-Net for your segmentation t
   - CUDA 12.x
   - Python v3.7 or higher
   - Pytorch v2.x
-  - pytorch-lightning 2.x
+  - Pytorch-lightning 2.x
   - Hardware Spec
     - GPU with 8GB memory or larger capacity
     - _For our experiments, we used 1GPU(A100-80G)_

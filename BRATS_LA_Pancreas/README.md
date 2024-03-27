@@ -17,7 +17,7 @@ python src/train_test.py -c brats-2018_lhunet_sgd
 **Before running the code above please adjust the config's paths.** 
 
 ## Inference
-Make sure in the config file you set the `just_test` variable to `true` and give the path to the model you want to test in the `ckpt_path`.
+Make sure in the config file you set the `test_mode` variable to `true` and give the path to the model you want to test in the `ckpt_path`.
 ```bash
 python src/train_test.py -c brats-2018_lhunet_sgd
 ```

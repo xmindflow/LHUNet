@@ -1,7 +1,7 @@
 #!/bin/sh
 
-DATASET_PATH=/home/say26747/Desktop/datasets/DATASET_Synapse_lhunet
-CHECKPOINT_PATH=../OUTPUT/test_synapse
+DATASET_PATH=/media/say26747/EC2426FA2426C782/LHUNET/DATASET_Synapse # dataset path
+CHECKPOINT_PATH=/home/say26747/Desktop/git/ACDC-nnunet/OUTPUT/test_synapse # checkpoint path
 
 export PYTHONPATH=.././
 export RESULTS_FOLDER="$CHECKPOINT_PATH"
