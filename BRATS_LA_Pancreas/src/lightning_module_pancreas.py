@@ -30,7 +30,7 @@ class SemanticSegmentation3D(pl.LightningModule):
             lambda_dice=lambda_dice,
             lambda_ce=lambda_ce,
             to_onehot_y=True,
-            include_background=False, 
+            include_background=False,
         ).to(self.device)
 
         ## Initialize metrics for each type and mode
@@ -133,7 +133,8 @@ class SemanticSegmentation3D(pl.LightningModule):
 
         if stage == "te" or stage == "vl":
             self._cal_metrics(preds, gts, stage)
-            # self._save_nifty_or_picture(batch, imgs, preds, gts, batch_idx)
+            if stage == "te":
+                self._save_nifty(batch, imgs, preds, gts, batch_idx)
 
         return loss
 
@@ -215,9 +216,7 @@ class SemanticSegmentation3D(pl.LightningModule):
         return weights
 
     def _cal_global_loss(self, preds: torch.Tensor, gts: torch.Tensor) -> torch.Tensor:
-        loss = self.criterion_dice_ce(
-            preds.float(), gts.float()
-        )
+        loss = self.criterion_dice_ce(preds.float(), gts.float())
         return loss
 
     def _log_losses(self, losses: torch.Tensor, stage: str) -> None:
@@ -259,3 +258,42 @@ class SemanticSegmentation3D(pl.LightningModule):
         else:
             preds = self(imgs)
         return preds
+
+    def _save_nifty(self, batch, imgs, preds, gts, batch_idx):
+        save_dir = self.logger.log_dir
+        if self.save_nifty:
+            for patient_idx in range(imgs.shape[0]):
+                self.save_nifty_from_logits_preds(
+                    batch["patient_name"][patient_idx],
+                    torch.eye(4),
+                    preds[patient_idx],
+                    gts[patient_idx],
+                    save_dir,
+                )
+
+    def save_nifty_from_logits_preds(
+        self,
+        name: str,
+        affinity: torch.Tensor,
+        preds: torch.Tensor,
+        masks: torch.Tensor,
+        save_dir: str,
+    ) -> None:
+        """
+        inputs are 4D tensors (channel,depth,height,width)
+        """
+        affinity = affinity.detach().cpu().numpy()
+        # not necessary to permute the preds and masks
+        preds = preds.permute(0, 2, 3, 1)
+        masks = masks.permute(0, 2, 3, 1).squeeze().type(torch.uint8)
+        preds_labels = (
+            torch.argmax(F.softmax(preds, dim=0), dim=0).squeeze().type(torch.uint8)
+        )
+        mask_img = nib.Nifti1Image(masks.detach().cpu().numpy(), affine=affinity)
+        preds_img = nib.Nifti1Image(
+            preds_labels.detach().cpu().numpy(), affine=affinity
+        )
+        name_dir = os.path.join(save_dir, "nifty predictions", name)
+        os.makedirs(name_dir, exist_ok=True)
+        nib.save(mask_img, os.path.join(name_dir, f"{name}-seg.nii.gz"))
+        nib.save(preds_img, os.path.join(name_dir, f"{name}-pred.nii.gz"))

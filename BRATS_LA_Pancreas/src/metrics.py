@@ -9,7 +9,6 @@ from monai.metrics import HausdorffDistanceMetric
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 
-
 class MONAIHausdorffDistance(torchmetrics.Metric):
     def __init__(self, include_background=False, percentile=95):
         super().__init__()
@@ -40,7 +39,6 @@ class MONAIHausdorffDistance(torchmetrics.Metric):
     def reset(self):
         # Reset the MONAI metric
         self.monai_hd95.reset()
-
 
 
 def get_binary_metrics(mode="tr", *args, **kwargs):

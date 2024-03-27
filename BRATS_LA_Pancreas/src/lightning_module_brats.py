@@ -220,9 +220,7 @@ class SemanticSegmentation3D(pl.LightningModule):
         return weights
 
     def _cal_global_loss(self, preds: torch.Tensor, gts: torch.Tensor) -> torch.Tensor:
-        loss = self.criterion_dice_ce(
-            preds.float(), gts.float()
-        )
+        loss = self.criterion_dice_ce(preds.float(), gts.float())
         return loss
 
     def _log_losses(self, losses: torch.Tensor, stage: str) -> None:

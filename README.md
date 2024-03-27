@@ -87,7 +87,7 @@ Instructions on how to train LHU-Net and perform infernece on your dataset.
 
 For detailed instructions for Synapse and ACDC datasets, please refer to the [README](Synapse_ACDC/README.md).
 
-For detailed instructions for BRaTS 2018, LA, and Pancreas datasets, please refer to the [README](BRATS_LA_Pancreas/README.md).
+For detailed instructions for BraTS 2018, LA, and Pancreas datasets, please refer to the [README](BRATS_LA_Pancreas/README.md).
 
 
 

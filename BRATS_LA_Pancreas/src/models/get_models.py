@@ -2,12 +2,10 @@ from monai.networks.nets import SwinUNETR, UNETR, SegResNetVAE
 import torch
 
 
-
 def get_lhunet_model(config):
     from models.dim3.lhunet.models.v7 import LHUNet as model
 
     return model(**config["model"]["params"])
-
 
 
 MODEL_FACTORY = {

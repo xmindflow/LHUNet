@@ -14,7 +14,6 @@ import torch.nn.functional as F
 import os
 
 
-
 def _print(string, p=None):
     if not p:
         print(string)

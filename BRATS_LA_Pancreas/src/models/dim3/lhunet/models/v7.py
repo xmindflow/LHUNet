@@ -295,7 +295,6 @@ class LHUNet(nn.Module):
 
         self.num_classes = out_channels
 
-
     def forward(self, x):
         in_x = x.clone()
         x = self.init(x)
