@@ -84,5 +84,5 @@ class LAHeart(Dataset):
         sample["label"] = (
             torch.as_tensor(sample["label"]).permute(0, 3, 1, 2).type(torch.long)
         )
-        sample['patient_name'] = image_name.split('/')[-1]
+        sample["patient_name"] = image_name.split("/")[-1]
         return sample

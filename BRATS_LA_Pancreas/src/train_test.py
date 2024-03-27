@@ -50,7 +50,9 @@ def configure_logger(config, parent_dir):
     if "brats" in config["dataset"]["name"].split("_")[0]:
         return TensorBoardLogger(path, name=config["model"]["name"])
     else:
-        return TensorBoardLogger(path, name=f"{config['model']['name']}_fold{config['fold']}")
+        return TensorBoardLogger(
+            path, name=f"{config['model']['name']}_fold{config['fold']}"
+        )
 
 
 def configure_trainer(config, logger):
@@ -66,7 +68,7 @@ def configure_trainer(config, logger):
     #     save_last=True,
     # )
     checkpoint_callback = ModelCheckpoint(
-        monitor="val_loss" if brats_dataset else None,
+        monitor="val_loss",
         dirpath=logger.log_dir,
         filename=f"{config['model']['name']}-{{epoch:02d}}-{{val_loss:.6f}}",
         save_top_k=3 if brats_dataset else 1,
@@ -99,28 +101,28 @@ def get_module(config):
 def main():
     ######################## parse the arguments ########################
     args = parse_arguments()
-    
+
     ######################## load the configuration file ########################
-    set_seed()
+    # set_seed()
     BASE_DIR = get_base_directory()
     CONFIG_NAME = (
         f"{args.config.split('_')[0]}/{args.config.split('_')[1]}/{args.config}.yaml"
-    )    
+    )
     CONFIG_FILE_PATH = os.path.join(BASE_DIR, "configs", CONFIG_NAME)
 
     config = load_config(CONFIG_FILE_PATH)
-    
+
     if "brats" not in config["dataset"]["name"].split("_")[0]:
         if args.fold == -1:
             raise ValueError(
                 "Fold must be determined for pancreas and la_heart dataset!"
             )
         config["fold"] = args.fold
-        
+
     print_config(config)
 
     tr_loader, vl_loader, te_loader = get_dataloaders(config, ["tr", "vl", "te"])
-    
+
     ######################### get the model and configure the trainer ########################
     network = get_model(config)
     lightning_module = get_module(config)

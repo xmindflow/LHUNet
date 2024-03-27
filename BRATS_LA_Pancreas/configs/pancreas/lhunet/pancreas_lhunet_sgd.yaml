@@ -1,17 +1,16 @@
 is3d: true
 find_lr: false
 checkpoints:
-  continue_training: false
-  test_mode: false
-  ckpt_path: '/cabinet/yousef/best.pt'
+  continue_training: false # continue training from a checkpoint (use it with ckpt_path)
+  test_mode: false # test mode (use it with ckpt_path)
+  ckpt_path: '/home/say26747/Desktop/last.ckpt'
   log_pictures: false
   save_nifty: true
 
 dataset:
   name: "LA_heart_loader"
   crop_size: [96,96,96]
-  path_to_data: "/home/say26747/Desktop/datasets/pancreas"
-  # path_to_data: "/cabinet/dataset/pancreas"
+  path_to_data: "/home/say26747/Desktop/datasets/pancreas" # path to the dataset
 
 datatype: 'Pancreas'
 
@@ -44,7 +43,7 @@ training:
       lr: 0.01
       momentum: 0.9
       weight_decay : 0.00003
-      # nesterov: true
+      nesterov: true
   criterion:
     params: 
       dice_weight: 1.0
@@ -55,8 +54,8 @@ training:
       max_epochs: 325
   epochs: 325
   
-model: 
-  name: 'lhUNET_SGD_PANCREAS_FINAL'
+model:  
+  name: 'lhUNET_SGD_PANCREAS' # do not change the lhUNET name at the begining
   params: # the class arguments defined above
     spatial_shapes: [96, 96, 96]
     do_ds: false # Deep Supervision
@@ -80,8 +79,7 @@ model:
     hyb_tf_num_heads: [4,4,8]
     hyb_tf_dropouts: 0.0
     hyb_cnn_blocks: nnn # n: resunet, d: deformconv, b: basicunet
-    hyb_vit_blocks: SSC # s: dlka_special_v2, S: dlka_sp_seq, c: dlka_channel_v2, C: dlka_ch_seq
-    # hyb_vit_sandwich: false
+    hyb_vit_blocks: SSC 
     hyb_skip_mode: "cat" # "sum" or "cat"
     hyb_arch_mode: "residual" # sequential, residual, parallel, collective
     hyb_res_mode: "sum" # "sum" or "cat"

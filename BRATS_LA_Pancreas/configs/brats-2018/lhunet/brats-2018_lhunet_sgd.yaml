@@ -9,26 +9,20 @@ dataset:
   input_size: [128,128,128]
   train:
     params:
-      data_root: "/home/say26747/Desktop/datasets/Brats 2018"
-      # data_root: "$TMPDIR/MICCAI_BraTS_2018_Data_Training"
-      # data_root: "/cabinet/dataset/brats/Brats 2018"
+      data_root: "/home/say26747/Desktop/datasets/MICCAI_BraTS_2018_Data_Training"   # path to the dataset
       normalization: true
       augmentation: true  
       p: 0.5
 
   validation:
     params:
-      data_root: "/home/say26747/Desktop/datasets/Brats 2018"
-      # data_root: "$TMPDIR/MICCAI_BraTS_2018_Data_Training"
-      # data_root: "/cabinet/dataset/brats/Brats 2018"
+      data_root: "/home/say26747/Desktop/datasets/MICCAI_BraTS_2018_Data_Training" # path to the dataset
       normalization: true
       augmentation: false  
 
   test:
     params:
-      data_root: "/home/say26747/Desktop/datasets/Brats 2018"
-      # data_root: "$TMPDIR/MICCAI_BraTS_2018_Data_Training"
-      # data_root: "/cabinet/dataset/brats/Brats 2018"
+      data_root: "/home/say26747/Desktop/datasets/MICCAI_BraTS_2018_Data_Training" # path to the dataset
       normalization: true
       augmentation: false 
 
@@ -96,8 +90,7 @@ model:
     hyb_tf_num_heads: [4,4,8]
     hyb_tf_dropouts: 0.1
     hyb_cnn_blocks: nnn # n: resunet, d: deformconv, b: basicunet
-    hyb_vit_blocks: SSC # s: dlka_special_v2, S: dlka_sp_seq, c: dlka_channel_v2, C: dlka_ch_seq
-    # hyb_vit_sandwich: false
+    hyb_vit_blocks: SSC 
     hyb_skip_mode: "cat" # "sum" or "cat"
     hyb_arch_mode: "residual" # sequential, residual, parallel, collective
     hyb_res_mode: "sum" # "sum" or "cat"
