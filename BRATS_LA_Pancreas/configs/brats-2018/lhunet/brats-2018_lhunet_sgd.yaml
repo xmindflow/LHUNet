@@ -1,28 +1,28 @@
 is3d: true
 checkpoints:
   continue_training: false # continue training from a checkpoint (use it with ckpt_path)
-  test_mode: true # test mode (use it with ckpt_path)
-  ckpt_path: '/home/say26747/Desktop/lhUNET_SGD_DEV_dr0.1_V7_lr0.003_kernel_3_dec_5_test_as_val-epoch=963-val_total_dice=0.860515.ckpt'
+  test_mode: false # test mode (use it with ckpt_path)
+  ckpt_path: '/home/say26747/Desktop/best.ckpt'
   save_nifty: true # save nifty files
 dataset:
   name: "brats2018_loader"
   input_size: [128,128,128]
   train:
     params:
-      data_root: "/home/say26747/Desktop/datasets/MICCAI_BraTS_2018_Data_Training"   # path to the dataset
+      data_root: "/home/say26747/Desktop/datasets/Brats 2018"   # path to the dataset
       normalization: true
       augmentation: true  
       p: 0.5
 
   validation:
     params:
-      data_root: "/home/say26747/Desktop/datasets/MICCAI_BraTS_2018_Data_Training" # path to the dataset
+      data_root: "/home/say26747/Desktop/datasets/Brats 2018" # path to the dataset
       normalization: true
       augmentation: false  
 
   test:
     params:
-      data_root: "/home/say26747/Desktop/datasets/MICCAI_BraTS_2018_Data_Training" # path to the dataset
+      data_root: "/home/say26747/Desktop/datasets/Brats 2018" # path to the dataset
       normalization: true
       augmentation: false 
 

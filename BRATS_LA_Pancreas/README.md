@@ -3,7 +3,7 @@
 You can download the learned weights and their results in the following links.
    Dataset   | Visulization         | Weights
   -----------|----------------|----------------
-   BRaTS 2018  | [[Download]()]| [[Download]()] 
+   BRaTS 2018  | [[Download](https://mega.nz/folder/L4oQmAzL#OxnzxfbQZ8Oanr0iaKJ0qw)]| [[Download](https://mega.nz/file/O1w02BAS#BNK2p2QZ2x2MDE5HKEe7Xwms7J5DMPlyYBMnUEjjwQ8)] 
    LA (fold 0)      | [[Download](https://mega.nz/folder/SpImhTRD#Rcyh4ernRwpWuma9EOLh0g)]| [[Download](https://mega.nz/file/TkIG0DDD#bTwRrWe_ht3hoitKWsH88LePoN0vokmBHYo8Xhsk8wU)] 
    Pancreas (fold 0)      | [[Download](https://mega.nz/folder/2sAEiBSb#_apiwqhLrCT-RMDm5Qsg4g)]| [[Download](https://mega.nz/file/z84ijCzA#ZLW7_-qqpfY0qlwoJAbu6bD0hv29iiRBjuFpFe4Sdsc)] 
 
