@@ -76,14 +76,11 @@ def get_vit_block(code):
 class BaseHybridBlock:
     def combine(self, tensors: list[torch.Tensor]):
         if self.res_mode == "sum":
-            # return torch.sum(torch.stack(tensors))
+
             res = torch.zeros_like(tensors[0])
             for t in tensors:
                 res = res + t
             return res
-        # elif self.res_mode=="cat":
-        #     res = torch.concatenate(tensors, dim=1)
-        #     return res
         else:
             raise NotImplementedError(
                 f"Not implemented combining mode for <{self.res}>"
@@ -109,7 +106,7 @@ class HybridEncoder(BaseBlock, BaseHybridBlock):
         vit_blocks="c",
         arch_mode="sequential",  # sequential, residual, parallel, collective
         res_mode="sum",  # "sum" or "cat"
-        norm_name="batch",  # ("group", {"num_groups": in_channels}),
+        norm_name="batch", 
         act_name=("leakyrelu", {"inplace": True, "negative_slope": 0.01}),
         *args: Any,
         **kwds: Any,
@@ -173,7 +170,6 @@ class HybridEncoder(BaseBlock, BaseHybridBlock):
                         act_name=act_name,
                         dropout=c_do,
                     ),
-                    # nn.MaxPool3d(kernel_size=3, stride=2, padding=1) if c_mp else nn.Identity()
                     nn.MaxPool3d(kernel_size=c_st, stride=c_st)
                     if c_mp
                     else nn.Identity(),

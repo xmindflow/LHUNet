@@ -23,11 +23,10 @@ class Brats2018(Dataset):
         vl_split: float = 0.1,
         te_split: float = 0.2,
         p: float = 0.5,
-    ):  # , train=True,):
+    ): 
         super(Brats2018, self).__init__()
         self.data_root = data_root
         self.modalities = modalities
-        # self.train = train
         self.crop_size = crop_size
         self.normalization = normalization
         self.vl_split = vl_split

@@ -220,9 +220,6 @@ class DeformConvPack(DeformConv):
             * self.kernel_size[1]
             * self.kernel_size[2]
         )
-        # print("=================")
-        # print("outchannels: {}".format(out_channels))
-        # print("=================")
         self.conv_offset = nn.Conv3d(
             self.in_channels,
             out_channels,
@@ -240,8 +237,6 @@ class DeformConvPack(DeformConv):
 
     def forward(self, input):
         offset = self.conv_offset(input)
-        # print("==================")
-        # print("Offset shape: {}".format(offset.shape))
         return DeformConvFunction.apply(
             input,
             offset,

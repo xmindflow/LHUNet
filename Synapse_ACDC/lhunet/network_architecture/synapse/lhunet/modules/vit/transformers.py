@@ -1,9 +1,6 @@
 import torch.nn as nn
 import torch
 
-# import sys
-# sys.path.append("..")
-
 from ..dynunet_blocks import UnetResBlock
 
 
@@ -202,14 +199,10 @@ class EfficientAttention(nn.Module):
 
     def forward(self, input_):
         B, N, C = input_.shape
-        # print("Input shape {}".format(input_.shape))
 
         queries = self.query_lin(input_).permute(0, 2, 1)
-        # print("queries shape {}".format(queries.shape))
         keys = self.key_lin(input_).permute(0, 2, 1)
-        # print("keys shape {}".format(keys.shape))
         values = self.value_lin(input_).permute(0, 2, 1)
-        # print("values shape {}".format(values.shape))
 
         head_key_channels = self.hidden_size // self.head_count
         head_value_channels = self.hidden_size // self.head_count
@@ -219,33 +212,30 @@ class EfficientAttention(nn.Module):
             key = F.softmax(
                 keys[:, i * head_key_channels : (i + 1) * head_key_channels, :], dim=2
             )
-            # print("Key shape: {}".format(key.shape))
+
 
             query = F.softmax(
                 queries[:, i * head_key_channels : (i + 1) * head_key_channels, :],
                 dim=1,
             )
-            # print("Query shape: {}".format(query.shape))
-            # print("Query transposed shape: {}".format(query.transpose(1,2).shape))
+
+
 
             value = values[
                 :, i * head_value_channels : (i + 1) * head_value_channels, :
             ]
-            # print("Value shape: {}".format(value.shape))
-            # print("Value transposed shape: {}".format(value.transpose(1,2).shape))
+
+
 
             context = key @ value.transpose(1, 2)  # dk*dv
-            # print("Context shape: {}".format(context.shape))
-            # print("Context transposed shape: {}".format(context.transpose(1,2).shape))
+
+
             attended_value = context.transpose(1, 2) @ query  # n*dv
-            # print("Attended value shape: {}".format(attended_value.shape))
+
             attended_values.append(attended_value)
 
         aggregated_values = torch.cat(attended_values, dim=1)
-        # print("Aggregated values shape before reprojection: {}".format(aggregated_values.shape))
         attention = self.reprojection(aggregated_values.transpose(1, 2))
-        # print("Aggregated values shape after reprojection: {}".format(attention.shape))
-        # sys.exit()
         return attention
 
     @torch.jit.ignore
@@ -556,15 +546,13 @@ class deformable_LKA_Attention(nn.Module):
         # Extract Depths
         for i in range(x.size(-1)):
             x_temp = x[:, :, :, :, i]
-            # print(x_temp.shape)
+
             x_temp = self.proj_1(x_temp)
             x_temp = self.activation(x_temp)
             x_temp = self.spatial_gating_unit(x_temp)
             x_temp = self.proj_2(x_temp)
             x_copy[:, :, :, :, i] = x_temp
 
-        # print("X shape after loop:{}".format(x.shape))
-        # print("Shorcut shape after loop:{}".format(shorcut.shape))
         x = x_copy + shorcut
         x = x.reshape(B, C, H * W * D).permute(0, 2, 1)  # B N C
         return x
@@ -597,7 +585,6 @@ class TransformerBlock_2Dsingle(nn.Module):
         """
 
         super().__init__()
-        # print("Using LKA Attention")
 
         if not (0 <= dropout_rate <= 1):
             raise ValueError("dropout_rate should be between 0 and 1.")
@@ -629,7 +616,6 @@ class TransformerBlock_2Dsingle(nn.Module):
         if self.pos_embed is not None:
             x = x + self.pos_embed
         y = self.norm(x)
-        # print(y.shape)
         z = self.epa_block(y, B, C, H, W, D)
         attn = x + self.gamma * z
         attn_skip = attn.reshape(B, H, W, D, C).permute(
@@ -797,7 +783,6 @@ class LKA3d_deform(nn.Module):
             stride=1,
             padding=1,
         )
-        # print("Using single deformable layers.")
         self.conv1 = nn.Conv3d(dim, dim, 1)
 
     def forward(self, x):
@@ -922,7 +907,6 @@ class LKA3d_conv(nn.Module):
             stride=1,
             padding=1,
         )
-        # print("Using single deformable layers.")
         self.conv1 = nn.Conv3d(dim, dim, 1)
 
     def forward(self, x):
@@ -1039,8 +1023,6 @@ class SpatialAttention_LKA(nn.Module):
         x_LKA = self.out_proj(x_LKA)
         x_SA = self.out_proj2(x_SA)
 
-        # print("x_LKA shape: {}".format(x_LKA.shape))
-        # print("x_SA shape: {}".format(x_SA.shape))
 
         x = torch.cat((x_SA, x_LKA), dim=-1)
         return x
@@ -1594,7 +1576,6 @@ class TransformerBlock_SE(nn.Module):
         """
 
         super().__init__()
-        # print("Using LKA Attention")
 
         if not (0 <= dropout_rate <= 1):
             raise ValueError("dropout_rate should be between 0 and 1.")

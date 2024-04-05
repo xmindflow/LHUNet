@@ -55,7 +55,7 @@ class SemanticSegmentation3D(pl.LightningModule):
             p.numel() for p in self.model.parameters() if p.requires_grad
         )
         print(f"Total trainable parameters: {round(n_parameters * 1e-6, 2)} M")
-        # self.log("n_parameters_M", round(n_parameters * 1e-6, 2))
+        
         size = config["dataset"]["input_size"]
         input_res = (4, size[2], size[0], size[1])
         input = torch.ones(()).new_empty(
@@ -196,7 +196,7 @@ class SemanticSegmentation3D(pl.LightningModule):
         preds: Union[torch.Tensor, list, tuple],
         gts: torch.Tensor,
     ) -> Tuple[Dict[str, torch.Tensor], torch.Tensor]:
-        if isinstance(preds, (list, tuple)):  # TODO: for the supervision case
+        if isinstance(preds, (list, tuple)): 
             weights = self._cal_loss_weights(preds)
             loss_dict = self._cal_loss_for_supervision(preds, gts, weights)
             preds = preds[0]

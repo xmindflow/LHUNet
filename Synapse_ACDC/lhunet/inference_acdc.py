@@ -45,11 +45,6 @@ def hd(pred,gt):
 
 
 def hd(pred, gt):
-    # labelPred=sitk.GetImageFromArray(lP.astype(np.float32), isVector=False)
-    # labelTrue=sitk.GetImageFromArray(lT.astype(np.float32), isVector=False)
-    # hausdorffcomputer=sitk.HausdorffDistanceImageFilter()
-    # hausdorffcomputer.Execute(labelTrue>0.5,labelPred>0.5)
-    # return hausdorffcomputer.GetAverageHausdorffDistance()
     if pred.sum() > 0 and gt.sum() > 0:
         hd95 = binary.hd95(pred, gt)
         print(hd95)
@@ -104,7 +99,6 @@ def test(fold):
         fw.write("hd_rv: {:.4f}\n".format(hd_rv[-1]))
         fw.write("hd_myo: {:.4f}\n".format(hd_myo[-1]))
         fw.write("hd_lv: {:.4f}\n".format(hd_lv[-1]))
-        # fw.write('*'*20+'\n')
         fw.write(
             "*" * 20 + "\n",
         )
@@ -117,12 +111,6 @@ def test(fold):
         fw.write("hd_lv: {:.4f}\n".format(hd_lv[-1]))
         fw.write("*" * 20 + "\n")
 
-    # fw.write('*'*20+'\n')
-    # fw.write('Mean_hd\n')
-    # fw.write('hd_rv'+str(np.mean(hd_rv))+'\n')
-    # fw.write('hd_myo'+str(np.mean(hd_myo))+'\n')
-    # fw.write('hd_lv'+str(np.mean(hd_lv))+'\n')
-    # fw.write('*'*20+'\n')
 
     fw.write("*" * 20 + "\n")
     fw.write("Mean_Dice\n")

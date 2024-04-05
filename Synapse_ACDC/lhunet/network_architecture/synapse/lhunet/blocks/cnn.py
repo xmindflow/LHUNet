@@ -36,8 +36,6 @@ class DCNNBlock(BaseBlock):
             stride=stride,
             padding=get_padding(kernel_size, stride),
         )
-        # nn.BatchNorm3d(out_channels),
-        # nn.PReLU(),
         self.norm = get_norm_layer(
             name=norm_name, spatial_dims=spatial_dims, channels=out_channels
         )
@@ -339,7 +337,7 @@ class CNNEncoder(BaseBlock):
         strides,
         maxpools,
         dropouts,
-        norm_name="batch",  # ("group", {"num_groups": in_channels}),
+        norm_name="batch", 
         act_name=("leakyrelu", {"inplace": True, "negative_slope": 0.01}),
         blocks: str = "n",
         spatial_dims=3,
@@ -378,7 +376,6 @@ class CNNEncoder(BaseBlock):
                 dropout=do,
             )
             if mp:
-                # maxpool = nn.MaxPool3d(kernel_size=3, stride=2, padding=1)
                 maxpool = nn.MaxPool3d(kernel_size=st, stride=st)
                 self.encoder_blocks.append(nn.Sequential(encoder, maxpool))
             else:
@@ -405,7 +402,7 @@ class CNNDecoder(BaseBlock):
         tcv_kernel_sizes,
         tcv_strides,
         tcv_bias=False,
-        norm_name="batch",  # ("group", {"num_groups": in_channels}),
+        norm_name="batch", 
         act_name=("leakyrelu", {"inplace": True, "negative_slope": 0.01}),
         blocks: str = "n",
         spatial_dims=3,
@@ -471,7 +468,6 @@ class CNNDecoder(BaseBlock):
     def forward(self, x, skips: list, return_outs=False, skip_sum=False):
         outs = []
         for up, conv in zip(self.ups, self.convs):
-            # print(f"x: {x.shape}, skip: {skips[-1].shape}")
             x = up(x)
 
             if skip_sum:

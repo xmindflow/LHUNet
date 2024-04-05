@@ -49,7 +49,6 @@ class SemanticSegmentation3D(pl.LightningModule):
             p.numel() for p in self.model.parameters() if p.requires_grad
         )
         print(f"Total trainable parameters: {round(n_parameters * 1e-6, 2)} M")
-        # self.log("n_parameters_M", round(n_parameters * 1e-6, 2))
 
         input_res = (1, 96, 96, 96)
         input = torch.ones(()).new_empty(
@@ -61,7 +60,6 @@ class SemanticSegmentation3D(pl.LightningModule):
         flops = FlopCountAnalysis(self.model, input)
         total_flops = flops.total()
         print(f"MAdds: {round(total_flops * 1e-9, 2)} G")
-        # self.log("GFLOPS", round(total_flops * 1e-9, 2))
 
         self.lr = self.config["training"]["optimizer"]["params"]["lr"]
         self.log_pictures = config["checkpoints"]["log_pictures"]
@@ -75,7 +73,6 @@ class SemanticSegmentation3D(pl.LightningModule):
             roi_size = config["dataset"]["crop_size"]
             self.slider = SlidingWindowInferer(
                 roi_size=roi_size,
-                # sw_batch_size=config["data_loader"]["train"]["batch_size"],
                 sw_batch_size=20,
                 **config["sliding_window_params"],
             )
@@ -103,7 +100,6 @@ class SemanticSegmentation3D(pl.LightningModule):
             return
         for type_ in self.metric_types:
             metric = np.mean(self.metrics[stage][type_])
-            # metric = torch.stack(self.metrics[stage][type_], dim=0).mean()
             self.log(f"{self.modes_dict[stage]}_{type_}", metric)
             self.metrics[stage][type_] = []
 
@@ -128,7 +124,6 @@ class SemanticSegmentation3D(pl.LightningModule):
 
         loss, preds = self._calculate_losses(preds, gts)
 
-        # self._update_metrics(preds, gts, stage)
         self._log_losses(loss, stage)
 
         if stage == "te" or stage == "vl":
@@ -192,8 +187,7 @@ class SemanticSegmentation3D(pl.LightningModule):
         preds: Union[torch.Tensor, list, tuple],
         gts: torch.Tensor,
     ) -> Tuple[Dict[str, torch.Tensor], torch.Tensor]:
-        if isinstance(preds, (list, tuple)):  # TODO: for the supervision case
-            # just doing it for the SegResNetVAE case, where the output is a list of 2 elements
+        if isinstance(preds, (list, tuple)): 
             weights = self._cal_loss_weights(preds)
             loss_dict = self._cal_loss_for_supervision(preds, gts, weights)
             preds = preds[0]

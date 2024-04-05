@@ -2,8 +2,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
-# import sys
-# sys.path.append("..")
+
 from ..cnn import *
 
 
@@ -206,7 +205,6 @@ class SpatialAttention(nn.Module):
         v_SA_projected = self.F(v_SA)
 
         query = torch.nn.functional.normalize(query, dim=-1)
-        # key = torch.nn.functional.normalize(key, dim=-1)
 
         attn_SA = query.permute(0, 1, 3, 2) @ k_projected
         if self.use_temperature:

@@ -2,8 +2,6 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
-# import sys
-# sys.path.append("..")
 from ..cnn import *
 
 
@@ -36,7 +34,6 @@ class TransformerBlock_LKA3D(nn.Module):
         """
 
         super().__init__()
-        # print(f"Using {epa_block}")
 
         if not (0 <= dropout_rate <= 1):
             raise ValueError("dropout_rate should be between 0 and 1.")
@@ -599,14 +596,10 @@ class EfficientAttention(nn.Module):
 
     def forward(self, input_):
         B, N, C = input_.shape
-        # print("Input shape {}".format(input_.shape))
 
         queries = self.query_lin(input_).permute(0, 2, 1)
-        # print("queries shape {}".format(queries.shape))
         keys = self.key_lin(input_).permute(0, 2, 1)
-        # print("keys shape {}".format(keys.shape))
         values = self.value_lin(input_).permute(0, 2, 1)
-        # print("values shape {}".format(values.shape))
 
         head_key_channels = self.hidden_size // self.head_count
         head_value_channels = self.hidden_size // self.head_count
@@ -616,33 +609,30 @@ class EfficientAttention(nn.Module):
             key = F.softmax(
                 keys[:, i * head_key_channels : (i + 1) * head_key_channels, :], dim=2
             )
-            # print("Key shape: {}".format(key.shape))
+
 
             query = F.softmax(
                 queries[:, i * head_key_channels : (i + 1) * head_key_channels, :],
                 dim=1,
             )
-            # print("Query shape: {}".format(query.shape))
-            # print("Query transposed shape: {}".format(query.transpose(1,2).shape))
+
+
 
             value = values[
                 :, i * head_value_channels : (i + 1) * head_value_channels, :
             ]
-            # print("Value shape: {}".format(value.shape))
-            # print("Value transposed shape: {}".format(value.transpose(1,2).shape))
+
+
 
             context = key @ value.transpose(1, 2)  # dk*dv
-            # print("Context shape: {}".format(context.shape))
-            # print("Context transposed shape: {}".format(context.transpose(1,2).shape))
+
+
             attended_value = context.transpose(1, 2) @ query  # n*dv
-            # print("Attended value shape: {}".format(attended_value.shape))
+
             attended_values.append(attended_value)
 
         aggregated_values = torch.cat(attended_values, dim=1)
-        # print("Aggregated values shape before reprojection: {}".format(aggregated_values.shape))
         attention = self.reprojection(aggregated_values.transpose(1, 2))
-        # print("Aggregated values shape after reprojection: {}".format(attention.shape))
-        # sys.exit()
         return attention
 
     @torch.jit.ignore
@@ -712,7 +702,6 @@ class TransformerBlock_3D_SE(nn.Module):
 
         """
         super().__init__()
-        # print("Using LKA Attention")
 
         if not (0 <= dropout_rate <= 1):
             raise ValueError("dropout_rate should be between 0 and 1.")

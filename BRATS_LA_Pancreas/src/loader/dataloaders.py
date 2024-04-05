@@ -1,5 +1,4 @@
 from .brats2018 import brats2018_loader
-from .brats2021 import brats2021_loader
 from .la_heart import la_heart_loader
 
 

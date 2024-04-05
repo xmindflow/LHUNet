@@ -9,28 +9,6 @@ def get_lhunet_model(config):
 
 
 MODEL_FACTORY = {
-    # "unet": get_unet,
-    # "transunet": get_transunet,
-    # "missformer": get_missformer,
-    # "multiresunet": get_multiresunet,
-    # "resunet": get_resunet,
-    # "uctransnet": get_uctransnet,
-    # "attunet": get_attunet,
-    # "unet3d": get_unet3d,
-    # "resunet3d": get_resunet3d,
-    # "resunetse3d": get_resunetse3d,
-    # "mainmodel": get_main_model,
-    # "mainmodel-bridge": get_main_bridge_model,
-    # "transunet3d": get_transunet3d,
-    # "swinunetr": get_swinunetr,
-    # "swinunetr3d": get_swinunetr,
-    # "swinunetr3d-v2": get_swinunetr,
-    # "unetr3d": get_unetr,
-    # "segresnetvae3d": get_segresnetvae,
-    # "nnformer3d": get_nnformer,
-    # "unetrpp3d": get_unetrpp,
-    # "dlk-former": d_lka_net_synapse,
-    # "vnet": get_vnet,
     "lhunet": get_lhunet_model,
 }
 
