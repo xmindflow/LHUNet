@@ -1,7 +1,7 @@
 
 # LHU-Net: A Light Hybrid U-Net for Cost-Efficient High-Performance Volumetric Medical Image Segmentation
 
-[![arXiv](https://img.shields.io/badge/arXiv-2309.00121-b31b1b.svg)](https://arxiv.org/abs/2309.00121)
+[![arXiv](https://img.shields.io/badge/arXiv-2404.05102-b31b1b.svg)](https://arxiv.org/abs/2404.05102)
 
 This repository contains the official implementation of **LHU-Net**. Our paper, "LHU-Net: A Light Hybrid U-Net for Cost-Efficient High-Performance Volumetric Medical Image Segmentation," addresses the growing complexity in medical image segmentation models, focusing on balancing computational efficiency with segmentation accuracy.
 
