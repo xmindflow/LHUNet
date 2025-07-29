@@ -15,16 +15,16 @@ This repository contains the official implementation of **LHU-Net**. Our paper, 
 2. [Updates](#bell-updates)
 3. [Key Contributions](#zap-key-contributions)
 4. [Model Architecture](#gear-model-architecture)
-5. [Datasets, Pre-trained Weights, and Visualizations](#datasets-pre-trained-weights-and-visualizations)
+5. [Datasets, Pre-trained Weights, and Visualizations](#%EF%B8%8F-datasets-pre-trained-weights-and-visulizations)
 6. [Results](#-results)
 7. [Getting Started](#-getting-started)
-    - [Requirements](#-requirements)
+    - [Requirements](#%EF%B8%8F-requirements)
     - [Installation](#-installation)
-    - [Training & Inference](#-training--inference)
-    - [Notes](#-notes)
+    - [Training & Inference](#%EF%B8%8F-training--inference)
+    - [Notes](#%EF%B8%8F-notes)
 8. [Acknowledgments](#-acknowledgments)
 9. [Citation](#books-citation)
-10. [Touchstone Benchmark](#-touchstone-benchmark)
+10. [Touchstone Benchmark](#touchstone-benchmark)
 
 ---
 
