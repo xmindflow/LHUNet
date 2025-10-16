@@ -15,7 +15,7 @@ This repository contains the official implementation of **LHU-Net**. Our paper, 
 2. [Updates](#bell-updates)
 3. [Key Contributions](#zap-key-contributions)
 4. [Model Architecture](#gear-model-architecture)
-5. [Datasets, Pre-trained Weights, and Visualizations](#%EF%B8%8F-datasets-pre-trained-weights-and-visulizations)
+5. [Datasets, Pre-trained Weights, and Visualizations](#%EF%B8%8F-datasets-pre-trained-weights-and-visualizations)
 6. [Results](#-results)
 7. [Getting Started](#-getting-started)
     - [Requirements](#%EF%B8%8F-requirements)
@@ -67,7 +67,7 @@ LHU-Net leverages a hierarchical U-Net encoder-decoder structure optimized for 3
 
 ---
 
-## 🗄️ Datasets, Pre-trained weights, and Visulizations
+## 🗄️ Datasets, Pre-trained weights, and Visualizations
 
 Our experiments were conducted on four benchmark datasets. The pre-processed datasets and pre-trained weights, including the predicted outputs on the test splits, can be downloaded from the table below.
 
