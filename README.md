@@ -36,6 +36,7 @@ The rise of Transformer architectures has advanced medical image segmentation, l
 ---
 
 ## :bell: Updates
+- :muscle: **[Touchstone Benchmark](https://github.com/MrGiovanni/Touchstone?tab=readme-ov-file#touchstone-10-model)** code and weight release - *January 30, 2026*
 - :punch: **Complete rewrite of the source code** for full compatibility with the nnUNetV2 framework – *July 29, 2025*
 - 🥳: **Paper Accepted in MICCAI 2025** – *June 17, 2025*
 - :fire: Participation in **[Touchstone Benchmark](https://github.com/MrGiovanni/Touchstone?tab=readme-ov-file#touchstone-10-model)** – *July 16, 2024*
@@ -142,10 +143,11 @@ This repository is built based on [nnFormer](https://github.com/282857341/nnForm
 If you find this work useful for your research, please cite:
 
 ```bibtex
-@article{sadegheih2024lhunet,
-  title={LHU-Net: A Lean Hybrid U-Net for Cost-Efficient High-Performance Volumetric Medical Image Segmentation},
+@inproceedings{sadegheih2025lhu,
+  title={LHU-Net: A lean hybrid u-net for cost-efficient, high-performance volumetric segmentation},
   author={Sadegheih, Yousef and Bozorgpour, Afshin and Kumari, Pratibha and Azad, Reza and Merhof, Dorit},
   booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={326--336},
   year={2025},
   organization={Springer}
 }
